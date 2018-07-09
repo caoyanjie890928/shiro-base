@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auttle.shiro.mapper.RoleResourcesMapper">
+  <resultMap id="BaseResultMap" type="com.auttle.shiro.model.RoleResources">
+    <id column="roleId" jdbcType="INTEGER" property="roleid" />
+    <id column="resourcesId" jdbcType="INTEGER" property="resourcesid" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from role_resources
+    where roleId = #{roleid,jdbcType=INTEGER}
+      and resourcesId = #{resourcesid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.auttle.shiro.model.RoleResources">
+    insert into role_resources (roleId, resourcesId)
+    values (#{roleid,jdbcType=INTEGER}, #{resourcesid,jdbcType=INTEGER})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select roleId, resourcesId
+    from role_resources
+  </select>
+</mapper>
